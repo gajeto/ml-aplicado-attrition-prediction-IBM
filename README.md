@@ -9,11 +9,12 @@ Modelo de predicción de **attrition** (renuncia de empleados por desgaste) con 
 ```
 ml-aplicado-attrition-prediction-IBM/
 ├─ ENTREGA 1/         # Notebooks y artefactos de la entrega (EDA, preparación, modelado)
+├─ ENTREGA 2/         # Notebooks y artefactos de la entrega (FE, tuning y umbrales)
 ├─ .gitignore
 └─ README.md
 ```
 
-> Nota: Estructura observada en la rama `main`. Los notebooks de trabajo se encuentran en **ENTREGA 1/procesamiento**.
+> Nota: Estructura observada en la rama `main`. Los notebooks de trabajo se encuentran en **ENTREGA XX/procesamiento**.
 
 ---
 
@@ -55,26 +56,41 @@ El dataset de IBM utilizado para este análisis es limitado en tamaño, lo que i
 Para una correcta ejecución en Colab, se debe usar el runtime 2025.07 que habilita dependencias internas requeridas por la librería `pycaret`
 
 1. El notebook fue ejecutado en Colab, se sugiere validar su ejecución también en Colab
-2. Cargar directamente el notebook, el archivo de scripts utils.py con métodos para aplicar EDA y el dataset local dataset-ibm.csv
-3. Ejecutar el flujo: **EDA → preparación → baseline**
+2. Cargar directamente el notebook, el archivo de scripts utils.py con métodos para aplicar EDA y el dataset local dataset_ibm.csv. Si se desea ejecutar solo el tuning, se debe cargar el dataset local dataset_ibm_sin_outliers.csv, resultante de la primera etapa de modelación.
+3. Entrega 1: Ejecutar el flujo: **EDA → preparación → baseline** (Opcional si se remite directamente al tuning)
+4. Entrega 2: Ejecutar el flujo: **FE → pipelines → tuning → análisis de umbrales**
 
 ---
 
 ## 📈 Resultados preliminares
 
+### Entrega 1:
+
 **Modelo baseline:** Regresión Logística  
-**Métricas(conjunto de test):** Accuracy **0.8947** · AUC **0.9086** · Recall **0.5789** · Precision **0.6471** · F1 **0.6111** · Kappa **0.5505** · MCC **0.5516**
+**Métricas(conjunto de test):** Accuracy **89.4%** · AUC **90.7%** · Recall **57.9%** · Precision **64.7%** · F1 **61.1%** · Kappa **55.5%** 
 
 **Interpretación preliminar:** buen equilibrio general, con margen para aumentar **recall** de la clase positiva mediante **ajuste de umbral**, `class_weight` o **calibración**, y oportunidades de mejora mediante la implementación de **ingeniería de características**
+
+### Entrega 2:
+**Modelo candidato:** XGBoost  
+**Métricas(conjunto de test):** Accuracy **80.3%** · AUC **88.6%** · Recall **76.1%** · Precision **68.4%** · F1 **70.6%** · Kappa **42.1%** 
+
+**Interpretación preliminar:** se mantiene el equilibrio general, evidenciandose mejoría en el recall y f1 score, generando mayor confianza en el modelo para apoyar la retención de empleados
 
 ---
 
 ## 🚀 Próximos pasos
 
+Entrega 1 (HECHO):
 - Ajuste de **umbral** y **calibración** (Platt/Isotónica) para mejorar recall manteniendo precisión.  
 - Generar **Interacciones/transformaciones** útiles en la fase de ingeniería de características
 - Comparar con **boosting** (LightGBM/XGBoost) manteniendo la logística como referencia.  
 - Reporte de métricas por grupos poblacionales y **entrenamiento robusto**
+
+Entrega 2:
+- Calibración de modelo candidato
+- Importancia de características
+- Conclusiones y despliegue
 
 ---
 
