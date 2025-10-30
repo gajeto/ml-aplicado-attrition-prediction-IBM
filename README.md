@@ -1,6 +1,6 @@
 # IBM Attrition Prediction — ML Aplicado
 
-Modelo de predicción de **attrition** (renuncia de empleados por desgaste) con el dataset sintético de IBM. Este repo contiene el EDA, la preparación de datos y un **baseline de clasificación** (Entrega 1)*.
+Modelo de predicción de **attrition** (renuncia de empleados por desgaste) con el dataset sintético de IBM. Este repo contiene el desarrollo del proyecto, desde el EDA, la preparación de datos, pipelines de entrenamiento y resultados.
 
 ---
 
