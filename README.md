@@ -10,6 +10,7 @@ Modelo de predicción de **attrition** (renuncia de empleados por desgaste) con 
 ml-aplicado-attrition-prediction-IBM/
 ├─ ENTREGA 1/         # Notebooks y artefactos de la entrega (EDA, preparación, modelado)
 ├─ ENTREGA 2/         # Notebooks y artefactos de la entrega (FE, tuning y umbrales)
+├─ ENTREGA 3/         # Notebooks y artefactos de la entrega (calibracion e interpretación)
 ├─ .gitignore
 └─ README.md
 ```
@@ -59,6 +60,7 @@ Para una correcta ejecución en Colab, se debe usar el runtime 2025.07 que habil
 2. Cargar directamente el notebook, el archivo de scripts utils.py con métodos para aplicar EDA y el dataset local dataset_ibm.csv. Si se desea ejecutar solo el tuning, se debe cargar el dataset local dataset_ibm_sin_outliers.csv, resultante de la primera etapa de modelación.
 3. Entrega 1: Ejecutar el flujo: **EDA → preparación → baseline** (Opcional si se remite directamente al tuning)
 4. Entrega 2: Ejecutar el flujo: **FE → pipelines → tuning → análisis de umbrales**
+4. Entrega 3: Se puede ejecutar todo el notebook (entrenamiento + calibracion) o, preferiblemente, **ejecutar desde la sección 2: MODELO FINAL** 
 
 ---
 
@@ -77,21 +79,26 @@ Para una correcta ejecución en Colab, se debe usar el runtime 2025.07 que habil
 
 **Interpretación preliminar:** se mantiene el equilibrio general, evidenciandose mejoría en el recall y f1 score, generando mayor confianza en el modelo para apoyar la retención de empleados
 
+### Entrega 3:
+**Modelo final:** XGBoost  
+**Métricas(conjunto de test):** PR-AUC **67.1%** · AUC **88.3%** · Recall(0) **90.7%** · Recall(1) **67.7%** · F1(0) **79.8%** · F1(1) **50.6%** · Kappa **42.1%** 
+
+**Conclusión final:** con ROC-AUC = 88 %, PR-AUC = 67 %, y Recall(1) ≈ 90 %, el modelo XGBoost muestra un desempeño muy competitivo para un evento del 16 %. Igualmente, equilibra bien la detección de eventos con un nivel razonable de falsas alarmas: un modelo útil y robusto, sujeto a ajuste del umbral según los costos del negocio.
+
 ---
 
 ## 🚀 Próximos pasos
 
-Entrega 1 (HECHO):
+Entrega 1 (HECHO): ✅
 - Ajuste de **umbral** y **calibración** (Platt/Isotónica) para mejorar recall manteniendo precisión.  
 - Generar **Interacciones/transformaciones** útiles en la fase de ingeniería de características
 - Comparar con **boosting** (LightGBM/XGBoost) manteniendo la logística como referencia.  
 - Reporte de métricas por grupos poblacionales y **entrenamiento robusto**
 
-Entrega 2:
-- Calibración de modelo candidato
+Entrega 2 (HECHO): ✅
+- PrCalibración de modelo candidato
 - Importancia de características
 - Conclusiones y despliegue
-
 ---
 
 ## 🤝 Créditos
